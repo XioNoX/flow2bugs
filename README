@@ -1,0 +1,33 @@
+Based on:
+https://github.com/gdestuynder/vuln2bugs/
+With bits of:
+http://blogs.splunk.com/2011/08/02/splunk-rest-api-is-easy-to-use/
+
+What it does:
+1/ Get the list of hostname/owners
+2/ Get a Splunk search result (by default, firewall logs of hosts not using the proxies)
+3/ Get IPs' PTR records
+4/ Massage the data to make it more usable
+5/ Send found source hostnames to OpSec using https://github.com/mozilla/service-map/tree/master/python/pyservicelib
+6/ File, update or close bugs to service owner's team, attaching the full list of flows
+
+Outputs via stdout:
+- Splunk search ID
+- IPs that don't have a PTR record set in dns
+- Hostnames that are not in opsec's DB
+- Hostnames that don't have owners in opsec's DB
+
+
+How to use:
+git clone https://github.com/XioNoX/flow2bugs.git
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+cd service-map/python/pyservicelib
+python setup.py install
+cd ../../../
+cp flow2bugs.json.dist flow2bugs.json
+Edit flow2bugs.json
+python flow2bugs.py
+
+Average runtime as of now is about 5min.

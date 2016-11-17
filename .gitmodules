@@ -1,0 +1,7 @@
+[submodule "bugzilla"]
+	path = bugzilla
+	url = https://github.com/gdestuynder/simple_bugzilla
+
+[submodule "service-map"]
+	path = service-map
+	url = https://github.com/mozilla/service-map

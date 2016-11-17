@@ -1,0 +1,7 @@
+bugzilla
+pyes
+requests
+pytz
+hjson
+dnspython
+httplib2
