@@ -1,0 +1,43 @@
+{
+    "bugzilla": {
+        "host": "https://bugzilla-dev.allizom.org",
+        "api_key": "",
+        "creator": "flow2bugs@netops.bugs"
+    },
+
+    "splunk": {
+        "host": "https://yourdomain:8089",
+        "username": "",
+        "password": "",
+        "query": "message_tag=\"RT_FLOW_SESSION_CREATE\" dest_zone=untrust (dest_port=443 OR dest_port=80) | dedup src_ip dest_ip dest_port | table src_ip dest_ip dest_port"
+    },
+
+    "eisowners": "",
+    "eisendpoint": "",
+    "doc_use_proxies": "",
+    "doc_permitted": "",
+    "exceptions_list": "",
+    "dest_whitelist": [""],
+    "teamsetup": {
+        "v2bkey-team-name": {
+            "name": "human readable team name",
+            "product": "Bugzilla product",
+            "component": "Bugzilla component",
+            "groups": ["bugzilla-group"],
+            "status": "NEW",
+            "priority": "--",
+            "version": "other",
+            "severity": "normal"
+        },
+        "v2bkey-team2-name": {
+            "name": "human readable team name 2",
+            "product": "Bugzilla product",
+            "component": "Bugzilla component",
+            "groups": ["bugzilla-group"],
+            "status": "NEW",
+            "priority": "--",
+            "version": "other",
+            "severity": "normal"
+        }
+    }
+}
