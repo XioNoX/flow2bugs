@@ -20,6 +20,8 @@ import base64
 import pyservicelib
 import httplib2
 import re
+import warnings
+from requests.packages.urllib3 import exceptions as requestexp
 from time import localtime,strftime,sleep
 from xml.dom import minidom
 
@@ -123,7 +125,8 @@ def merge_flows_owners(flows, owners, config):
     flows_fqdn_owner = {}
     # use pyservicelib to submit hosts to EIS
     pyservicelib.config.apihost = config['eisendpoint']
-    pyservicelib.config.sslverify = False
+    warnings.simplefilter('ignore', requestexp.SubjectAltNameWarning)
+    #pyservicelib.config.sslverify = False
     s = pyservicelib.Search()
     # Iterate over dict of src_ip, containing list of destip/port
     for src_ip, attributes in flows.iteritems():
@@ -214,7 +217,7 @@ def bugzilla_actions(config, team, ordered_flows):
 {hosts_count} hosts are going directly to the internet without using the site proxies.
 
 Please follow this documentation to see if the flow is already permitted through the proxies: {doc_permitted}
-Then either file a bug under Infrastructure & Operations: Other or/and follow this doc to configure your servers:
+Then either file a bug under Infrastructure & Operations: Proxy ACL request or/and follow this doc to configure your servers:
 {doc_use_proxies}.
 
 If the host should NOT use the proxies, please document the reason in {exceptions_list}.

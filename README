@@ -28,6 +28,7 @@ python setup.py install
 cd ../../../
 cp flow2bugs.json.dist flow2bugs.json
 Edit flow2bugs.json
+Download the Mozilla root CA certificate and save it as ca.crt (http://wiki.mozilla.org/MozillaRootCertificate)
 python flow2bugs.py
 
 Average runtime as of now is about 5min.

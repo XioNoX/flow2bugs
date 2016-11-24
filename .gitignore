@@ -1,3 +1,4 @@
 flow2bugs.json
 *.pyc
 env
+ca.crt
